@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hussan Consultancy Global — Insight Without Borders</title>
+<link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Official Hussan Consultancy Global brand palette */
+    --ink:#0F2140;        /* Deep Navy — primary */
+    --ink-2:#16294F;       /* navy panel, one step lighter */
+    --ink-3:#1C3363;       /* navy panel, two steps lighter */
+    --paper:#F7F3EA;       /* Ivory Cream — background */
+    --paper-2:#EFE7D5;      /* ivory, one step darker */
+    --text-dark:#33404F;    /* Slate — body text */
+    --text-dim:#8A7554;     /* Bronze — supporting text */
+    --line:rgba(247,243,234,0.14);
+    --line-dark:rgba(51,64,79,0.16);
+    --brass:#C6A05E;        /* Warm Gold — accent */
+    --brass-soft:#DCC08C;
+    --teal:#5C6B7D; /* slate tint, used for secondary case labels */
+    --radius:2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--text-dark);
+    font-family:'Calibri','Lato',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  h1,h2,h3,h4{font-family:'Bitter',serif; font-weight:700; letter-spacing:-0.01em; color:var(--ink);}
+  .mono{font-family:'Poppins',sans-serif;}
+  .eyebrow{
+    font-family:'Poppins',sans-serif;
+    font-weight:500;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(11,18,32,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:0 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px; color:#EDEEF0;
+  }
+  .brand{
+    display:flex; align-items:center;
+    text-decoration:none;
+  }
+  .brand img{height:36px; width:auto; display:block;}
+  nav.links{display:flex; gap:34px; font-size:0.86rem;}
+  nav.links a{text-decoration:none; color:#C7CBD4; transition:color .2s;}
+  nav.links a:hover{color:var(--brass-soft);}
+  .nav-cta{
+    border:1px solid var(--brass); color:var(--brass-soft);
+    padding:8px 18px; font-size:0.8rem; font-family:'Poppins',sans-serif;
+    text-decoration:none; letter-spacing:0.04em; transition:all .2s;
+  }
+  .nav-cta:hover{background:var(--brass); color:var(--ink);}
+  .nav-toggle{display:none;}
+  @media (max-width:900px){
+    nav.links{display:none;}
+    .nav-toggle{display:block; background:none; border:none; color:#fff; font-size:1.4rem;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(ellipse 120% 90% at 70% -10%, var(--ink-3) 0%, var(--ink) 55%);
+    color:#fff;
+    padding:168px 0 100px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.4vw, 3.6rem);
+    line-height:1.12;
+    color:#F5F3EE;
+    margin-bottom:26px;
+  }
+  .hero h1 em{color:var(--brass-soft); font-style:italic;}
+  .hero p.lead{
+    font-size:1.08rem; color:#AEB6C6; max-width:520px; margin-bottom:36px;
+  }
+  .hero-stats{
+    display:flex; gap:40px; margin-top:8px; flex-wrap:wrap;
+  }
+  .hero-stats div{border-left:1px solid var(--line); padding-left:16px;}
+  .hero-stats .num{font-family:'Bitter',serif; font-size:1.7rem; color:#fff;}
+  .hero-stats .lbl{font-family:'Poppins',sans-serif; font-size:0.68rem; color:#8992A3; letter-spacing:0.08em; text-transform:uppercase; margin-top:2px;}
+  .btn-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--brass); color:var(--ink); text-decoration:none;
+    padding:14px 28px; font-family:'Poppins',sans-serif; font-size:0.82rem;
+    letter-spacing:0.04em; transition:background .2s;
+  }
+  .btn-primary:hover{background:var(--brass-soft);}
+  .btn-secondary{
+    border:1px solid var(--line); color:#E7E9EE; text-decoration:none;
+    padding:14px 28px; font-family:'Poppins',sans-serif; font-size:0.82rem;
+    letter-spacing:0.04em; transition:border-color .2s;
+  }
+  .btn-secondary:hover{border-color:var(--brass);}
+
+  /* signature network diagram */
+  .network{position:relative; width:100%; aspect-ratio:1/1; max-width:460px; margin:0 auto;}
+  .network svg{width:100%; height:100%;}
+  .network .node-dot{fill:var(--brass); }
+  .network .node-dot.center{fill:#fff;}
+  .network .edge{stroke:rgba(198,154,69,0.35); stroke-width:1; fill:none;}
+  .network .pulse{stroke:var(--brass-soft); stroke-width:1.4; fill:none; stroke-dasharray:6 10; animation:dash 5s linear infinite;}
+  @keyframes dash{ to { stroke-dashoffset:-160; } }
+  .network text{font-family:'Poppins',sans-serif; font-size:9px; fill:#9AA3B4; letter-spacing:0.03em;}
+  .network .center-label{fill:#0F2140; font-size:10px; font-weight:600;}
+
+  /* ---------- SECTION shared ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:680px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem); margin-top:10px; color:var(--text-dark);}
+  .section-head p{color:var(--text-dim); margin-top:16px; font-size:1.02rem; max-width:600px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper);}
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px;}
+  @media (max-width:840px){ .about-grid{grid-template-columns:1fr;} }
+  .about-copy p{color:var(--text-dim); margin-bottom:18px; font-size:1.02rem;}
+  .about-copy p strong{color:var(--text-dark); font-weight:600;}
+  .about-facts{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-dark); border:1px solid var(--line-dark);}
+  .fact{background:var(--paper); padding:26px 22px;}
+  .fact .num{font-family:'Bitter',serif; font-size:2rem; color:var(--ink);}
+  .fact .lbl{font-family:'Poppins',sans-serif; font-size:0.7rem; color:var(--text-dim); letter-spacing:0.06em; text-transform:uppercase; margin-top:6px;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--ink); color:#fff;}
+  .services .section-head p{color:#9AA3B4;}
+  .services .eyebrow{color:var(--brass-soft);}
+  .service-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .service-card{background:var(--ink-2); padding:34px 30px;}
+  .service-card .idx{font-family:'Poppins',sans-serif; font-size:0.72rem; color:var(--brass); letter-spacing:0.1em;}
+  .service-card h3{font-size:1.2rem; color:#fff; margin:14px 0 12px;}
+  .service-card ul{list-style:none;}
+  .service-card li{
+    font-size:0.92rem; color:#AEB6C6; padding:9px 0; border-top:1px solid var(--line);
+  }
+  .service-card li:first-child{border-top:none;}
+  .service-card li strong{display:block; color:#E7E9EE; font-weight:500; margin-bottom:2px;}
+
+  /* ---------- ENGAGEMENTS ---------- */
+  .engagements{background:var(--paper);}
+  .case-list{display:flex; flex-direction:column; gap:1px; background:var(--line-dark); border:1px solid var(--line-dark);}
+  .case{
+    background:var(--paper); padding:36px;
+    display:grid; grid-template-columns:180px 1fr 220px; gap:28px; align-items:start;
+    transition:background .25s;
+  }
+  .case:hover{background:var(--paper-2);}
+  @media (max-width:900px){ .case{grid-template-columns:1fr;} }
+  .case-meta{font-family:'Poppins',sans-serif; font-size:0.72rem; color:var(--text-dim);}
+  .case-meta .code{color:var(--ink); font-weight:600; font-size:0.85rem; display:block; margin-bottom:6px;}
+  .case-meta .date{display:block; margin-top:10px; color:var(--text-dim);}
+  .case-body h3{font-size:1.3rem; margin-bottom:10px; color:var(--text-dark);}
+  .case-body .client{
+    font-family:'Poppins',sans-serif; font-size:0.74rem; color:var(--teal);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; display:block;
+  }
+  .case-body p{color:var(--text-dim); font-size:0.96rem;}
+  .case-tags{display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; justify-content:flex-start;}
+  .tag{
+    border:1px solid var(--line-dark); color:var(--text-dim);
+    font-family:'Poppins',sans-serif; font-size:0.68rem;
+    padding:5px 10px; letter-spacing:0.03em; white-space:nowrap; height:fit-content;
+  }
+  .case-logo{
+    width:56px; height:56px; object-fit:cover; border:1px solid var(--line-dark);
+    margin-bottom:12px;
+  }
+
+  /* ---------- APPROACH STRIP ---------- */
+  .strip{background:var(--ink-3); color:#fff; padding:64px 0;}
+  .strip .wrap{display:flex; gap:48px; flex-wrap:wrap; justify-content:space-between;}
+  .strip-item{max-width:240px;}
+  .strip-item .eyebrow{color:var(--brass-soft);}
+  .strip-item p{color:#AEB6C6; font-size:0.92rem; margin-top:10px;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{background:var(--ink); color:#fff; padding:96px 0 0;}
+  .contact-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:60px; padding-bottom:80px; border-bottom:1px solid var(--line);}
+  @media (max-width:840px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact h2{color:#F5F3EE; font-size:clamp(1.8rem,3vw,2.4rem); margin-top:10px;}
+  .contact p.lead{color:#9AA3B4; margin-top:18px; max-width:460px;}
+  .offices{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .office{border-top:1px solid var(--line); padding-top:16px;}
+  .office .city{font-family:'Bitter',serif; font-size:1.1rem; color:#fff;}
+  .office .region{font-family:'Poppins',sans-serif; font-size:0.68rem; color:var(--brass-soft); letter-spacing:0.08em; text-transform:uppercase; margin-top:4px;}
+  .office .focus{color:#8992A3; font-size:0.85rem; margin-top:8px;}
+  .contact-cta{margin-top:32px; display:flex; gap:16px; flex-wrap:wrap;}
+  footer{padding:28px 0; }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:'Poppins',sans-serif; font-size:0.72rem; color:#6D7688;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand"><img src="assets/logo-reversed.png" alt="Hussan Consultancy Global"></a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#engagements">Engagements</a>
+      <a href="initiatives.html">Initiatives</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Start a conversation</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Insight Without Borders</p>
+      <h1>Transforming global enterprises through <em>strategic intelligence</em>, financial precision, and advanced technology.</h1>
+      <p class="lead">We provide end-to-end corporate advisory, digital innovation, and human development solutions across India and international markets — pairing deep industry research with emerging technology to drive scalable growth, governance, and operational efficiency.</p>
+      <div class="btn-row">
+        <a href="#engagements" class="btn-primary">View recent engagements</a>
+        <a href="#services" class="btn-secondary">Explore our services</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">5</div><div class="lbl">Practice lines</div></div>
+        <div><div class="num">7</div><div class="lbl">Platforms, Global Ecosystem Portfolio</div></div>
+        <div><div class="num">4+</div><div class="lbl">Markets in delivery</div></div>
+      </div>
+    </div>
+    <div class="network" aria-hidden="true">
+      <svg viewBox="0 0 460 460">
+        <g class="edge">
+          <path d="M230 230 L230 70"/>
+          <path d="M230 230 L365 150"/>
+          <path d="M230 230 L390 300"/>
+          <path d="M230 230 L280 400"/>
+          <path d="M230 230 L120 400"/>
+          <path d="M230 230 L65 300"/>
+          <path d="M230 230 L90 150"/>
+        </g>
+        <g class="pulse">
+          <path d="M230 230 L230 70"/>
+          <path d="M230 230 L390 300"/>
+          <path d="M230 230 L120 400"/>
+        </g>
+        <circle class="node-dot center" cx="230" cy="230" r="26"/>
+        <text class="center-label" x="230" y="234" text-anchor="middle">HCG</text>
+
+        <circle class="node-dot" cx="230" cy="70" r="6"/>
+        <text x="230" y="52" text-anchor="middle">STRATEGY</text>
+
+        <circle class="node-dot" cx="365" cy="150" r="6"/>
+        <text x="378" y="145" text-anchor="start">BANKING &amp; FINANCE</text>
+
+        <circle class="node-dot" cx="390" cy="300" r="6"/>
+        <text x="403" y="304" text-anchor="start">AI &amp; TECH</text>
+
+        <circle class="node-dot" cx="280" cy="400" r="6"/>
+        <text x="280" y="422" text-anchor="middle">EDUCATION</text>
+
+        <circle class="node-dot" cx="120" cy="400" r="6"/>
+        <text x="120" y="422" text-anchor="middle">HUMAN DEV.</text>
+
+        <circle class="node-dot" cx="65" cy="300" r="6"/>
+        <text x="52" y="304" text-anchor="end">DIGITAL TRADE</text>
+
+        <circle class="node-dot" cx="90" cy="150" r="6"/>
+        <text x="78" y="145" text-anchor="end">COMPLIANCE</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">About the firm</p>
+      <h2>One firm. Five interconnected practice lines.</h2>
+    </div>
+    <div class="about-copy">
+      <p>Hussan Consultancy Global (LLP) provides end-to-end corporate advisory, digital innovation, and human development solutions across India and international markets. We combine <strong>deep industry research</strong> with <strong>emerging technology</strong> to drive scalable growth, governance, and operational efficiency.</p>
+      <p>Our engagements rarely sit inside a single discipline. A telemedicine build carries a data-governance question; a franchise rollout carries a financial-controls question; an equity structure carries a technology-delivery question. We staff every mandate with the same principle we design platforms around: <strong>one governed system, many connected views</strong>.</p>
+      <div class="about-facts">
+        <div class="fact"><div class="num">02</div><div class="lbl">Jurisdictions in active structuring work</div></div>
+        <div class="fact"><div class="num">03</div><div class="lbl">AI-native platforms in build, 2026</div></div>
+        <div class="fact"><div class="num">108</div><div class="lbl">Community units in one rollout programme</div></div>
+        <div class="fact"><div class="num">24</div><div class="lbl">Month delivery horizon, largest mandate</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What we do</p>
+      <h2>Core services</h2>
+      <p>Five practice lines, one delivery discipline — research-led, technology-enabled, governed end to end.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="idx">01 / STRATEGY &amp; ADVISORY</div>
+        <h3>Strategy &amp; Advisory</h3>
+        <ul>
+          <li><strong>Business &amp; Strategy</strong>Corporate planning, project management, performance enhancement, policy formulation, governance advisory.</li>
+          <li><strong>Corporate &amp; Compliance</strong>Business structuring, LLP/company formation, secretarial assistance, due diligence.</li>
+          <li><strong>International Trade</strong>Cross-border facilitation, export-import advisory, global sourcing, foreign market entry.</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="idx">02 / BANKING &amp; FINANCIAL SERVICES</div>
+        <h3>Banking &amp; Financial Services</h3>
+        <ul>
+          <li><strong>Financial Advisory</strong>Wealth management, treasury planning, corporate finance, restructuring, feasibility studies.</li>
+          <li><strong>Analytics &amp; Research</strong>Valuation reports, economic studies, market intelligence, portfolio analysis, financial modelling.</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="idx">03 / TECHNOLOGY &amp; INNOVATION</div>
+        <h3>Technology &amp; Innovation</h3>
+        <ul>
+          <li><strong>AI &amp; Emerging Tech</strong>AI/ML implementation, big data, IoT, robotics, process automation, cloud solutions.</li>
+          <li><strong>IT Solutions</strong>Software development, cybersecurity, system integration, digital governance, enterprise platforms.</li>
+          <li><strong>Blockchain &amp; Digital Assets</strong>dApps, smart contract development, asset tokenisation, secure wallet custody.</li>
+          <li><strong>Healthcare Innovation</strong>Digital health solutions, public health research, healthcare process optimisation.</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="idx">04 / EDUCATION &amp; HUMAN DEVELOPMENT</div>
+        <h3>Education &amp; Human Development</h3>
+        <ul>
+          <li><strong>Professional Academies</strong>Executive education in banking, accountancy, AI, tax, compliance, corporate law.</li>
+          <li><strong>Behavioural Consultancy</strong>Leadership development, public policy, personal development, organisational psychology.</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="idx">05 / DIGITAL BUSINESS &amp; TRADE</div>
+        <h3>Digital Business &amp; Trade</h3>
+        <ul>
+          <li><strong>E-Commerce &amp; Digital Marketing</strong>Online marketplace development, SEO, digital branding, customer engagement.</li>
+          <li><strong>General Trading</strong>Global distribution, import/export, wholesale of lawful commodities and technology products.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="engagements" id="engagements">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Selected work · Last 6 months</p>
+      <h2>Recent engagements</h2>
+      <p>A cross-section of platforms and structuring mandates delivered or in active build across our technology and advisory practice. Full case files available under NDA.</p>
+    </div>
+
+    <div class="case-list">
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / B&amp;B</span>
+          Health &amp; Wellness Technology
+          <span class="date">Aug 2026 · v1.0</span>
+        </div>
+        <div class="case-body">
+          <img class="case-logo" src="assets/being-becoming-logo.jpg" alt="Being &amp; Becoming logo">
+          <span class="client">IP Owner — Hussan Consultancy Global</span>
+          <h3>Being &amp; Becoming — AI-Enabled Telemedicine &amp; Diagnostics Platform</h3>
+          <p>Architected the expansion of an existing mental-health booking platform into a full multi-specialty telemedicine product: a single patient record spanning mental health, general consultation, and diagnostic imaging, wrapped in an AI-enabled sales, chatbot, and follow-up layer — with every clinical decision kept in human clinicians' hands. Built on the same Human Transformation philosophy underpinning our human-development practice.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">AI / ML</span>
+          <span class="tag">Telemedicine</span>
+          <span class="tag">Data Architecture</span>
+          <span class="tag">Product Strategy</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / AZAD</span>
+          Travel, Medical Tourism &amp; Mobility
+          <span class="date">Aug 2026 · v3.0</span>
+        </div>
+        <div class="case-body">
+          <span class="client">Azad Tours and Event · Istanbul, Türkiye</span>
+          <h3>Four-Vertical AI-Orchestrated Travel &amp; Global Mobility Platform</h3>
+          <p>Designed a unified B2B/B2C platform for a destination management company operating since 2014 — a conversational AI layer that turns email, WhatsApp text, and voice enquiries into costed offers across travel, events, medical tourism, and residency &amp; citizenship advisory, governed by a tiered approval workflow and a weekly margin-health dashboard integrated with workforce-management infrastructure.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">AI Orchestration</span>
+          <span class="tag">B2B / B2C</span>
+          <span class="tag">Financial Governance</span>
+          <span class="tag">Systems Integration</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / TUTOR</span>
+          EdTech · Corporate Structuring
+          <span class="date">Aug 2026 · v1.0</span>
+        </div>
+        <div class="case-body">
+          <span class="client">Project AI Tutor · Multi-jurisdiction venture</span>
+          <h3>AI Tutor — Strategic Structuring &amp; Solution Architecture</h3>
+          <p>Advised the founding stakeholders on holding-company structure, intercompany contract and transfer-pricing framework, and a phased four-stage MVP roadmap for a cost-conscious, hybrid AI tutoring engine with a blockchain layer for IP provenance and credentialing — consolidated into a single reference document for formal stakeholder sign-off.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">Corporate Structuring</span>
+          <span class="tag">AI Product</span>
+          <span class="tag">Blockchain</span>
+          <span class="tag">Transfer Pricing</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / PACE</span>
+          Civic Technology · GovTech
+          <span class="date">Aug 2026 · v1.0</span>
+        </div>
+        <div class="case-body">
+          <span class="client">Platform extension · NGO &amp; federation coordination</span>
+          <h3>PACE — Peaceful Assembly &amp; Civic Engagement Module</h3>
+          <p>Specified an extension to an existing field-force management platform, enabling permit-based, capacity-managed coordination of large civic and community mobilisation events — appointment-based attendance, geofenced site management, and real-time occupancy dashboards — with privacy, consent, and data-governance requirements designed in as load-bearing from the outset, not appended after the fact.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">GovTech</span>
+          <span class="tag">Geofencing</span>
+          <span class="tag">Data Governance</span>
+          <span class="tag">Field-Force Systems</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / TOFU</span>
+          Blockchain · FinTech &amp; Audit
+          <span class="date">2026 · Prototype spec v1.0</span>
+        </div>
+        <div class="case-body">
+          <span class="client">TofuChain · Internal technology venture</span>
+          <h3>TofuChain — One Ledger, Two Brand Fronts</h3>
+          <p>Specified a bookkeeping architecture built around one core principle — one chain, many views: AI extraction turns invoices into structured transactions, a SHA-256 hash-chained ledger makes every record tamper-evident, and a smart-contract rule engine auto-approves and pays matching transactions. White-labelled as <strong>Atheera Wealth</strong> for personal and corporate bookkeeping, and as the <strong>Mithabhai Foundation NGO Ledger</strong> for India NGO/FCRA-compliant donation governance — audit reports, board-resolution linkage, and multi-country balance sheets all derived from the same chain.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">Blockchain</span>
+          <span class="tag">Audit &amp; Compliance</span>
+          <span class="tag">Smart Contracts</span>
+          <span class="tag">Multi-Country Finance</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / ROLLOUT</span>
+          Education · Change Management
+          <span class="date">2026 · 8-quarter programme</span>
+        </div>
+        <div class="case-body">
+          <span class="client">World Federation of KSIMC · Regional Federations</span>
+          <h3>AI Training Roadmap — Global Community Rollout</h3>
+          <p>Built a phased, tier-based deployment plan bringing an AI-literacy training programme to 108 community units across 106 cities and 25+ countries — sequencing a metro-tier proof of concept, an overlapping second wave, and a lighter standardised onboarding package for smaller communities, with trainers, kits, and budget sized to each quarter's onboarding volume.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">Programme Design</span>
+          <span class="tag">AI Literacy</span>
+          <span class="tag">Global Rollout</span>
+          <span class="tag">Resource Planning</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / TUTOR-UX</span>
+          EdTech · Product Design
+          <span class="date">Sept 2026 · Draft v1.0</span>
+        </div>
+        <div class="case-body">
+          <span class="client">AI Adaptive Tutor · Multi-jurisdiction venture</span>
+          <h3>AI Adaptive Tutor — 21-Screen Wireframe Architecture</h3>
+          <p>Delivered a mid-fidelity wireframe deck for a Grades 7–10 adaptive tutoring product — 21 screens consolidated across four role-based journeys (Public &amp; Onboarding, Student, Parent/Family, Admin), built around a Tutor + VILC engine that pairs a worked example with an interactive diagram, plus eight reusable states (MFA modal, upgrade prompt, report viewer, and others) wireframed once rather than duplicated across pages.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">Wireframing</span>
+          <span class="tag">Adaptive Learning</span>
+          <span class="tag">UX Architecture</span>
+          <span class="tag">Role-Based Design</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / SETU</span>
+          GovTech · Public Entitlements
+          <span class="date">Sept 2026 · Concept v1.0</span>
+        </div>
+        <div class="case-body">
+          <span class="client">Mithabhai Foundation · India</span>
+          <h3>Setu — AI-Enabled Entitlement Engine</h3>
+          <p>Architected an engine that sequences every Central and State entitlement an Indian citizen is owed — from Aadhaar linking through PAN, ration card, and family ID, to targeted grants such as Ayushman Bharat and PM-KISAN — auto-unlocking each next step via DigiLocker verification, with vernacular voice AI in Hindi, Telugu, Tamil, Marathi and more, and SLA-tracked, auto-drafted RTS Act grievance filing when a state delays.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">GovTech</span>
+          <span class="tag">Vernacular AI</span>
+          <span class="tag">DigiLocker / eKYC</span>
+          <span class="tag">Grievance Automation</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / LEXICON</span>
+          Media &amp; Language · Publishing Technology
+          <span class="date">Sept 2026 · Concept v1.0</span>
+        </div>
+        <div class="case-body">
+          <span class="client">Multilingual Audio Books Platform</span>
+          <h3>Five System Layers, Five Language Authorities</h3>
+          <p>Specified a books-and-audiobooks pipeline — ingestion, repository, translation &amp; QA, production, delivery — for Arabic, Persian, Urdu, French and English, calibrated against a 20-volume scholar-validated reference work and extensible to 200+ languages, producing four SKUs per title per language: full and summary translation, full and summary audiobook.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">Publishing Pipeline</span>
+          <span class="tag">Multilingual AI</span>
+          <span class="tag">Scholar Validation</span>
+          <span class="tag">Content Architecture</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="code">CASE / ONE-NESS</span>
+          Community &amp; Cooperative Economy
+          <span class="date">Sept 2026 · Concept v1.0</span>
+        </div>
+        <div class="case-body">
+          <span class="client">ONE-NESS Community Platform</span>
+          <h3>Faith-Rooted Community, Welfare &amp; Cooperative Economy</h3>
+          <p>Designed a single-ledger platform spanning individual and family development, tiered welfare case intake, a governed cooperative business network, and a shared digital wallet across charity, cooperative and personal balances — with identity portability (DID) and privacy-preserving eligibility proofs (ZK) supporting welfare and Zakat/Khums-linked disbursement across a four-tier governance structure, from Global Council down to Family.</p>
+        </div>
+        <div class="case-tags">
+          <span class="tag">Community Platform</span>
+          <span class="tag">Digital Wallet</span>
+          <span class="tag">DID / ZK-Proof</span>
+          <span class="tag">Cooperative Economy</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <div class="strip-item">
+      <p class="eyebrow">Research-led</p>
+      <p>Every build starts with an industry and regulatory scan — not a template — so the architecture fits the market it ships into.</p>
+    </div>
+    <div class="strip-item">
+      <p class="eyebrow">Governance by design</p>
+      <p>Consent, compliance, and audit trails are specified alongside features, not appended once a regulator asks.</p>
+    </div>
+    <div class="strip-item">
+      <p class="eyebrow">Human decisions stay human</p>
+      <p>AI accelerates discovery, drafting, and operations. Clinical, financial, and governance decisions stay with accountable people.</p>
+    </div>
+    <div class="strip-item">
+      <p class="eyebrow">Built to scale across borders</p>
+      <p>Multi-entity, multi-currency, and multi-jurisdiction from the first architecture diagram, not retrofitted later.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">Get in touch</p>
+      <h2>Bring us your next mandate.</h2>
+      <p class="lead">Whether it's a platform build, a corporate structure, or a market-entry study — we scope before we propose, and propose before we build.</p>
+      <div class="contact-cta">
+        <a href="mailto:hello@hussanconsultancy.com" class="btn-primary">hello@hussanconsultancy.com</a>
+        <a href="tel:+912240001234" class="btn-secondary">+91 22 4000 1234</a>
+      </div>
+      <img src="assets/logo-icon.png" alt="Hussan Consultancy Global mark" style="height:40px; width:auto; margin-top:44px; opacity:0.85;">
+    </div>
+    <div class="offices">
+      <div class="office">
+        <div class="city">Mumbai</div>
+        <div class="region">Headquarters</div>
+        <div class="focus">Level 14, Orion Business Tower, Bandra Kurla Complex, Mumbai 400051, India.</div>
+      </div>
+      <div class="office">
+        <div class="city">Dubai</div>
+        <div class="region">Regional Office</div>
+        <div class="focus">Corporate structuring, holding entities, and Gulf-market advisory.</div>
+      </div>
+      <div class="office">
+        <div class="city">London</div>
+        <div class="region">Regional Office</div>
+        <div class="focus">International trade, financial advisory, and cross-border structuring.</div>
+      </div>
+      <div class="office">
+        <div class="city">www.hussanconsultancy.com</div>
+        <div class="region">Online</div>
+        <div class="focus">hello@hussanconsultancy.com · +91 22 4000 1234</div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Hussan Consultancy Global LLP. All rights reserved. · Mumbai · Dubai · London</span>
+      <span>Strategy · Finance · Technology · Education · Trade</span>
+    </div>
+  </footer>
+</section>
+
+</body>
+</html>

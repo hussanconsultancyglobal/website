@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Initiative Marketing &amp; YouTube Tracker — Hussan Consultancy Global Ecosystem Portfolio</title>
+<link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F2140; --ink-2:#16294F; --ink-3:#1C3363;
+    --paper:#F7F3EA; --paper-2:#EFE7D5;
+    --text-dark:#33404F; --text-dim:#8A7554;
+    --line:rgba(247,243,234,0.14); --line-dark:rgba(51,64,79,0.16);
+    --brass:#C6A05E; --brass-soft:#DCC08C;
+    --teal:#5C6B7D;
+    --good:#5C8A66; --warn:#B98A3A; --plan:#7E88A3;
+    --radius:2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--text-dark); font-family:'Calibri','Lato',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  @media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;} }
+  h1,h2,h3,h4{font-family:'Bitter',serif; font-weight:700; letter-spacing:-0.01em; color:var(--ink);}
+  .mono{font-family:'Poppins',sans-serif;}
+  .eyebrow{font-family:'Poppins',sans-serif; font-weight:500; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--brass);}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  header.nav{position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(11,18,32,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1180px; margin:0 auto; padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:72px; color:#EDEEF0;}
+  .brand{display:flex; align-items:center; text-decoration:none;}
+  .brand img{height:36px; width:auto; display:block;}
+  nav.links{display:flex; gap:34px; font-size:0.86rem;}
+  nav.links a{text-decoration:none; color:#C7CBD4; transition:color .2s;}
+  nav.links a:hover, nav.links a.active{color:var(--brass-soft);}
+  .nav-cta{border:1px solid var(--brass); color:var(--brass-soft); padding:8px 18px; font-size:0.8rem; font-family:'Poppins',sans-serif; text-decoration:none; letter-spacing:0.04em; transition:all .2s;}
+  .nav-cta:hover{background:var(--brass); color:var(--ink);}
+  @media (max-width:900px){ nav.links{display:none;} }
+
+  .hero{background:radial-gradient(ellipse 120% 90% at 70% -10%, var(--ink-3) 0%, var(--ink) 55%); color:#fff; padding:168px 0 88px; position:relative; overflow:hidden; border-bottom:1px solid var(--line);}
+  .hero .wrap{max-width:820px;}
+  .hero h1{font-size:clamp(2.1rem, 4vw, 3.2rem); line-height:1.14; color:#F5F3EE; margin-bottom:22px;}
+  .hero h1 em{color:var(--brass-soft); font-style:italic;}
+  .hero p.lead{font-size:1.06rem; color:#AEB6C6; max-width:640px; margin-bottom:32px;}
+  .hero-stats{display:flex; gap:40px; margin-top:8px; flex-wrap:wrap;}
+  .hero-stats div{border-left:1px solid var(--line); padding-left:16px;}
+  .hero-stats .num{font-family:'Bitter',serif; font-size:1.6rem; color:#fff;}
+  .hero-stats .lbl{font-family:'Poppins',sans-serif; font-size:0.66rem; color:#8992A3; letter-spacing:0.07em; text-transform:uppercase; margin-top:2px;}
+
+  section{padding:88px 0;}
+  .section-head{max-width:680px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.7rem,2.8vw,2.2rem); margin-top:10px; color:var(--text-dark);}
+  .section-head p{color:var(--text-dim); margin-top:14px; font-size:1.01rem; max-width:620px;}
+
+  /* ---- FLYWHEEL / STRATEGY ---- */
+  .flywheel{background:var(--paper);}
+  .flywheel-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  @media (max-width:900px){ .flywheel-grid{grid-template-columns:1fr;} }
+  .flywheel-copy p{color:var(--text-dim); margin-bottom:16px; font-size:1rem;}
+  .flywheel-copy p strong{color:var(--text-dark); font-weight:600;}
+  .fw-diagram{position:relative; width:100%; aspect-ratio:1/1; max-width:420px; margin:0 auto;}
+  .fw-diagram svg{width:100%; height:100%;}
+  .fw-diagram .edge{stroke:var(--brass); stroke-width:1.2; fill:none; marker-end:url(#arrow);}
+  .fw-diagram .pulse{stroke:var(--brass-soft); stroke-width:1.6; fill:none; stroke-dasharray:5 8; animation:dash 4s linear infinite;}
+  @keyframes dash{ to { stroke-dashoffset:-130; } }
+  .fw-diagram circle.node{fill:var(--ink); stroke:var(--brass); stroke-width:1.4;}
+  .fw-diagram text{font-family:'Poppins',sans-serif; font-size:10.5px; fill:var(--ink); font-weight:600;}
+  .fw-diagram text.sub{font-size:8px; fill:var(--text-dim); font-weight:400;}
+
+  /* ---- INITIATIVE CARDS ---- */
+  .initiatives{background:var(--ink); color:#fff;}
+  .initiatives .section-head p{color:#9AA3B4;}
+  .initiatives .eyebrow{color:var(--brass-soft);}
+  .init-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .init{background:var(--ink-2); padding:38px;}
+  .init-top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:22px; border-bottom:1px solid var(--line); padding-bottom:22px;}
+  .init-top .code{font-family:'Poppins',sans-serif; font-size:0.72rem; color:var(--brass); letter-spacing:0.1em; margin-bottom:8px; display:block;}
+  .init-top h3{color:#fff; font-size:1.4rem;}
+  .init-top .vertical{font-family:'Poppins',sans-serif; font-size:0.78rem; color:#9AA3B4; margin-top:6px;}
+  .yt-chip{background:rgba(198,160,94,0.12); border:1px solid var(--brass); color:var(--brass-soft); font-family:'Poppins',sans-serif; font-size:0.74rem; padding:8px 14px; white-space:nowrap; height:fit-content;}
+  .yt-chip b{color:#fff; display:block; font-size:0.86rem; margin-bottom:2px;}
+  .init-cols{display:grid; grid-template-columns:1fr 1fr 1fr; gap:30px;}
+  @media (max-width:900px){ .init-cols{grid-template-columns:1fr;} }
+  .init-col h4{font-family:'Poppins',sans-serif; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-soft); margin-bottom:10px;}
+  .init-col ul{list-style:none;}
+  .init-col li{font-size:0.9rem; color:#C7CBD4; padding:6px 0; border-top:1px solid var(--line);}
+  .init-col li:first-child{border-top:none;}
+  .init-col p{font-size:0.9rem; color:#C7CBD4;}
+  .cross-box{margin-top:22px; padding:16px 18px; background:rgba(198,160,94,0.08); border-left:2px solid var(--brass);}
+  .cross-box .lbl{font-family:'Poppins',sans-serif; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-soft); margin-bottom:6px;}
+  .cross-box p{font-size:0.9rem; color:#C7CBD4;}
+
+  /* ---- TRACKER TABLE ---- */
+  .tracker{background:var(--paper);}
+  .tracker-note{font-family:'Poppins',sans-serif; font-size:0.76rem; color:var(--text-dim); margin-bottom:24px; max-width:620px;}
+  .tbl-wrap{overflow-x:auto; border:1px solid var(--line-dark);}
+  table.tracker-tbl{width:100%; border-collapse:collapse; min-width:820px; background:var(--paper);}
+  table.tracker-tbl th{
+    text-align:left; font-family:'Poppins',sans-serif; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--paper); background:var(--ink); padding:14px 16px; white-space:nowrap;
+  }
+  table.tracker-tbl td{padding:16px; font-size:0.9rem; color:var(--text-dark); border-top:1px solid var(--line-dark); vertical-align:top;}
+  table.tracker-tbl tr:nth-child(even) td{background:var(--paper-2);}
+  .status-pill{font-family:'Poppins',sans-serif; font-size:0.68rem; padding:4px 10px; letter-spacing:0.03em; white-space:nowrap; display:inline-block;}
+  .status-live{background:rgba(92,138,102,0.14); color:var(--good); border:1px solid var(--good);}
+  .status-build{background:rgba(185,138,58,0.14); color:var(--warn); border:1px solid var(--warn);}
+  .status-plan{background:rgba(126,136,163,0.14); color:var(--plan); border:1px solid var(--plan);}
+
+  /* ---- PLAYBOOK STRIP ---- */
+  .strip{background:var(--ink-3); color:#fff; padding:60px 0;}
+  .strip .wrap{display:flex; gap:40px; flex-wrap:wrap; justify-content:space-between;}
+  .strip-item{max-width:250px;}
+  .strip-item .idx{font-family:'Poppins',sans-serif; font-size:0.68rem; color:var(--brass); letter-spacing:0.1em;}
+  .strip-item .eyebrow{color:var(--brass-soft); margin-top:6px;}
+  .strip-item p{color:#AEB6C6; font-size:0.9rem; margin-top:8px;}
+
+  /* ---- FUNNEL / CONVERSION ---- */
+  .funnel{background:var(--paper);}
+  .funnel-steps{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-dark); border:1px solid var(--line-dark);}
+  @media (max-width:840px){ .funnel-steps{grid-template-columns:1fr 1fr;} }
+  .fstep{background:var(--paper); padding:26px 22px;}
+  .fstep .n{font-family:'Bitter',serif; color:var(--brass); font-size:1.3rem;}
+  .fstep h4{font-size:1rem; margin:10px 0 6px; color:var(--text-dark);}
+  .fstep p{font-size:0.86rem; color:var(--text-dim);}
+
+  .contact{background:var(--ink); color:#fff; padding:88px 0 0;}
+  .contact-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:60px; padding-bottom:70px; border-bottom:1px solid var(--line);}
+  @media (max-width:840px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact h2{color:#F5F3EE; font-size:clamp(1.7rem,2.8vw,2.2rem); margin-top:10px;}
+  .contact p.lead{color:#9AA3B4; margin-top:16px; max-width:460px;}
+  .contact-cta{margin-top:28px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{background:var(--brass); color:var(--ink); text-decoration:none; padding:14px 28px; font-family:'Poppins',sans-serif; font-size:0.82rem; letter-spacing:0.04em; transition:background .2s;}
+  .btn-primary:hover{background:var(--brass-soft);}
+  .btn-secondary{border:1px solid var(--line); color:#E7E9EE; text-decoration:none; padding:14px 28px; font-family:'Poppins',sans-serif; font-size:0.82rem; letter-spacing:0.04em; transition:border-color .2s;}
+  .btn-secondary:hover{border-color:var(--brass);}
+  footer{padding:26px 0;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:'Poppins',sans-serif; font-size:0.72rem; color:#6D7688;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><img src="assets/logo-reversed.png" alt="Hussan Consultancy Global"></a>
+    <nav class="links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#engagements">Engagements</a>
+      <a href="initiatives.html" class="active">Initiatives</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="#tracker" class="nav-cta">View tracker</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Digital Growth Engine · Grounded in the Global Ecosystem Portfolio, Sept 2026</p>
+    <h1>Three flagship initiatives. Three YouTube channels. <em>One seven-platform ecosystem.</em></h1>
+    <p class="lead">Hussan Consultancy Global's Global Ecosystem Portfolio spans seven governed platforms. This tracker covers the three consumer-facing initiatives carrying the heaviest marketing load — <strong>Being &amp; Becoming</strong> (health &amp; wellness), <strong>AI Adaptive Tutor</strong> (Grades 7–10 education), and <strong>Mithabhai Foundation — Setu</strong> (Indian public entitlements) — each with a dedicated YouTube channel, cross-launched into one another and into the wider portfolio: Azad Tours Platform, TofuChain, the Multilingual Audio Books Platform, and ONE-NESS Community.</p>
+    <div class="hero-stats">
+      <div><div class="num">07</div><div class="lbl">Platforms in the portfolio</div></div>
+      <div><div class="num">03</div><div class="lbl">Initiatives with dedicated channels</div></div>
+      <div><div class="num">06</div><div class="lbl">Cross-launch pathways</div></div>
+      <div><div class="num">01</div><div class="lbl">Shared conversion funnel</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="flywheel">
+  <div class="wrap flywheel-grid">
+    <div class="flywheel-copy">
+      <p class="eyebrow">The model</p>
+      <h2>Separate channels, shared funnel.</h2>
+      <p>The portfolio's engineering backbone is one shared engine behind seven front doors — application layer, permissioned ledger, smart-contract automation, ZK-proof identity — engaged only where each platform genuinely needs it. Marketing follows the same discipline: <strong>each initiative earns its own identity</strong> — its own YouTube channel, its own content voice, its own social handles — because a wellness audience and an edtech audience don't search, watch, or trust the same way.</p>
+      <p>But every channel is also a doorway to the others. A parent watching an AI Adaptive Tutor video about exam stress is one end-screen away from a Being &amp; Becoming wellness episode. A viewer learning about a government education scheme on the Setu channel is one link away from an AI Adaptive Tutor scholarship-prep session. <strong>The initiatives compete for attention separately, and convert together</strong> — with the remaining four platforms (Azad Tours, TofuChain, Audio Books, ONE-NESS Community) folded into the same flywheel as they come to market.</p>
+      <p>This page is the tracker: what each channel is for, how it feeds the others, and where the numbers get logged.</p>
+    </div>
+    <div class="fw-diagram" aria-hidden="true">
+      <svg viewBox="0 0 420 420">
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#C6A05E"/></marker>
+        </defs>
+        <g class="edge">
+          <path d="M210 90 A140 140 0 0 1 340 280" />
+          <path d="M340 280 A140 140 0 0 1 80 280" />
+          <path d="M80 280 A140 140 0 0 1 210 90" />
+        </g>
+        <g class="pulse">
+          <path d="M210 90 A140 140 0 0 1 340 280" />
+          <path d="M340 280 A140 140 0 0 1 80 280" />
+          <path d="M80 280 A140 140 0 0 1 210 90" />
+        </g>
+        <circle class="node" cx="210" cy="70" r="46"/>
+        <text x="210" y="66" text-anchor="middle">BEING &amp;</text>
+        <text x="210" y="78" text-anchor="middle">BECOMING</text>
+        <text class="sub" x="210" y="91" text-anchor="middle">Wellness</text>
+
+        <circle class="node" cx="358" cy="292" r="46"/>
+        <text x="358" y="284" text-anchor="middle">AI ADAPTIVE</text>
+        <text x="358" y="296" text-anchor="middle">TUTOR</text>
+        <text class="sub" x="358" y="309" text-anchor="middle">Grades 7–10</text>
+
+        <circle class="node" cx="62" cy="292" r="46"/>
+        <text x="62" y="288" text-anchor="middle">SETU</text>
+        <text class="sub" x="62" y="301" text-anchor="middle">Mithabhai Fdn.</text>
+        <text class="sub" x="62" y="311" text-anchor="middle">Entitlements</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="initiatives" id="initiatives">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Initiative by initiative</p>
+      <h2>What each channel is building</h2>
+      <p>Audience, content pillars, platforms, and the specific cross-launch link into the other two — details drawn from the Global Ecosystem Portfolio, Sept 2026.</p>
+    </div>
+
+    <div class="init-list">
+
+      <div class="init">
+        <div class="init-top">
+          <div>
+            <span class="code">INITIATIVE 01 / HEALTH &amp; WELLNESS</span>
+            <h3>Being &amp; Becoming</h3>
+            <div class="vertical">Health and wellness for life — continuous care, not episodic treatment</div>
+          </div>
+          <div class="yt-chip"><b>YouTube: Being &amp; Becoming TV</b>Teleconsultation, EHR custody &amp; continuous-care education</div>
+        </div>
+        <div class="init-cols">
+          <div class="init-col">
+            <h4>Audience</h4>
+            <ul>
+              <li>Patients seeking continuous, not one-off, care</li>
+              <li>Families managing recurring wellness check-ins</li>
+              <li>Patients wanting record custody &amp; consent control</li>
+            </ul>
+          </div>
+          <div class="init-col">
+            <h4>Content pillars</h4>
+            <ul>
+              <li>Teleconsultation &amp; booking walkthroughs</li>
+              <li>EHR &amp; report vault — patient-controlled record custody explained</li>
+              <li>"Becoming Line" check-ins — recurring, AI-assisted follow-up</li>
+              <li>Consent &amp; access governance — hash-anchored consent, specialist-only clinical calls</li>
+            </ul>
+          </div>
+          <div class="init-col">
+            <h4>Channels &amp; cadence</h4>
+            <ul>
+              <li>YouTube: 2 long-form + daily Shorts</li>
+              <li>Instagram Reels: daily wellness tips</li>
+              <li>LinkedIn: clinical &amp; B2B partnerships</li>
+              <li>Facebook: patient community group</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cross-box">
+          <div class="lbl">Cross-launch out</div>
+          <p>End-screen and pinned comment route parents/students to <strong>AI Adaptive Tutor</strong> for exam-stress content, and route families to <strong>Setu</strong> for Ayushman Bharat and other public-health scheme eligibility explainers. Conversion goal: consultation booking / app download.</p>
+        </div>
+      </div>
+
+      <div class="init">
+        <div class="init-top">
+          <div>
+            <span class="code">INITIATIVE 02 / EDUCATION</span>
+            <h3>AI Adaptive Tutor</h3>
+            <div class="vertical">Personal AI tutoring, Grades 7–10 — Tutor + VILC, 21 wireframed screens across student, parent &amp; admin journeys</div>
+          </div>
+          <div class="yt-chip"><b>YouTube: AI Adaptive Tutor Lab</b>Diagnostics, worked examples, progress &amp; planner walkthroughs</div>
+        </div>
+        <div class="init-cols">
+          <div class="init-col">
+            <h4>Audience</h4>
+            <ul>
+              <li>Students, Grades 7–10</li>
+              <li>Parents managing a child's plan &amp; progress</li>
+              <li>Schools evaluating adaptive-learning tools</li>
+            </ul>
+          </div>
+          <div class="init-col">
+            <h4>Content pillars</h4>
+            <ul>
+              <li>Diagnostic explainers — pinpointing level &amp; gaps before lesson one</li>
+              <li>Tutor Canvas demos — worked example + VILC interactive diagram side by side</li>
+              <li>Practice → Assess walkthroughs — hint, check understanding, timed assessment</li>
+              <li>Results &amp; Progress/Planner — mastery graph, recall decay, revision queue, for parents</li>
+            </ul>
+          </div>
+          <div class="init-col">
+            <h4>Channels &amp; cadence</h4>
+            <ul>
+              <li>YouTube: 3 long-form + daily Shorts</li>
+              <li>Instagram/Shorts: exam-season pushes</li>
+              <li>LinkedIn: school &amp; institutional partnerships</li>
+              <li>WhatsApp broadcast: doubt-session reminders</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cross-box">
+          <div class="lbl">Cross-launch out</div>
+          <p>Study-stress episodes cross-promote <strong>Being &amp; Becoming</strong> for student mental wellness; scholarship and government-scheme videos cross-promote <strong>Setu</strong>. Conversion goal: plan selection / checkout (Free · Lite · Plus · Family tiers).</p>
+        </div>
+      </div>
+
+      <div class="init">
+        <div class="init-top">
+          <div>
+            <span class="code">INITIATIVE 03 / PUBLIC ENTITLEMENTS · INDIA</span>
+            <h3>Mithabhai Foundation — Setu</h3>
+            <div class="vertical">"Setu" — bridge. Sequences every Central &amp; State entitlement a citizen is owed, L0 → L3, and walks them to it</div>
+          </div>
+          <div class="yt-chip"><b>YouTube: Setu — India Entitlements Explained</b>L0–L3 scheme journeys, DigiLocker &amp; grievance walkthroughs</div>
+        </div>
+        <div class="init-cols">
+          <div class="init-col">
+            <h4>Audience</h4>
+            <ul>
+              <li>Citizens navigating Central &amp; State schemes</li>
+              <li>NRIs assisting family back home</li>
+              <li>Community organisations &amp; federations</li>
+            </ul>
+          </div>
+          <div class="init-col">
+            <h4>Content pillars</h4>
+            <ul>
+              <li>L0–L3 journey explainers — Foundation (Aadhaar) → Financial &amp; Local ID → Family &amp; Social → Targeted Grants</li>
+              <li>Vernacular Voice AI demos — Hindi, Telugu, Tamil, Marathi &amp; more</li>
+              <li>DigiLocker &amp; Aadhaar eKYC walkthroughs — automatic document fetch &amp; verification</li>
+              <li>Grievance auto-filing explainers — SLA-tracked RTS Act filings when a state delays</li>
+            </ul>
+          </div>
+          <div class="init-col">
+            <h4>Channels &amp; cadence</h4>
+            <ul>
+              <li>YouTube: 2 explainers + policy news Shorts</li>
+              <li>Facebook: broadest community reach</li>
+              <li>WhatsApp channel: scheme-update broadcasts</li>
+              <li>Instagram: carousel eligibility guides</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cross-box">
+          <div class="lbl">Cross-launch out</div>
+          <p>Scholarship &amp; education-scheme content routes to <strong>AI Adaptive Tutor</strong>; Ayushman Bharat and health-scheme content routes to <strong>Being &amp; Becoming</strong>. Conversion goal: advisory consultation / community registration.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="funnel" id="ecosystem">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The other four front doors</p>
+      <h2>Wider ecosystem, same flywheel</h2>
+      <p>Four more platforms in the Global Ecosystem Portfolio will join the same cross-launch model as each comes to market.</p>
+    </div>
+    <div class="funnel-steps">
+      <div class="fstep">
+        <div class="n">04</div>
+        <h4>Azad Tours Platform</h4>
+        <p>Travel, events, medical tourism, global mobility &amp; stays — five verticals, one engine. Phase 1: Sept 2026 → Feb 2027.</p>
+      </div>
+      <div class="fstep">
+        <div class="n">05</div>
+        <h4>TofuChain</h4>
+        <p>One hash-chained ledger, white-labelled as Atheera Wealth (personal/corporate bookkeeping) and the Mithabhai Foundation NGO ledger (FCRA-compliant).</p>
+      </div>
+      <div class="fstep">
+        <div class="n">06</div>
+        <h4>Multilingual Audio Books Platform</h4>
+        <p>Books &amp; audiobooks in Arabic, Persian, Urdu, French &amp; English — scholar-calibrated, extensible to 200+ languages.</p>
+      </div>
+      <div class="fstep">
+        <div class="n">07</div>
+        <h4>ONE-NESS Community</h4>
+        <p>Faith-rooted community platform — individual &amp; family development, welfare, cooperative economy, and a shared digital wallet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tracker" id="tracker">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Tracking dashboard</p>
+      <h2>Initiative status tracker</h2>
+      <p>A live-format template for weekly review — channel build status, this period's headline metric, and the next milestone per initiative, cross-referenced against each platform's own delivery status in the portfolio.</p>
+    </div>
+    <p class="tracker-note">Delivery-stage references are drawn from the Global Ecosystem Portfolio (Sept 2026); channel/social figures are placeholders for the tracking template — replace with actuals once channels go live and are wired to analytics.</p>
+    <div class="tbl-wrap">
+      <table class="tracker-tbl">
+        <thead>
+          <tr>
+            <th>Initiative</th>
+            <th>Platform delivery stage</th>
+            <th>Channel status</th>
+            <th>Content cadence</th>
+            <th>Primary KPI this period</th>
+            <th>Next milestone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Being &amp; Becoming</strong><br>Being &amp; Becoming TV</td>
+            <td>Live build · v1.0, Aug 2026</td>
+            <td><span class="status-pill status-build">In build</span></td>
+            <td>2 long-form + daily Shorts</td>
+            <td>Subscribers &amp; booking clicks</td>
+            <td>Channel launch + first 10 videos</td>
+          </tr>
+          <tr>
+            <td><strong>AI Adaptive Tutor</strong><br>AI Adaptive Tutor Lab</td>
+            <td>Concept · 21-screen wireframe deck v1.0</td>
+            <td><span class="status-pill status-plan">Planned</span></td>
+            <td>3 long-form + daily Shorts</td>
+            <td>Demo bookings from video CTA</td>
+            <td>Pilot cohort launch video</td>
+          </tr>
+          <tr>
+            <td><strong>Mithabhai Foundation — Setu</strong><br>Setu — India Entitlements Explained</td>
+            <td>Concept · L0–L3 engine specified</td>
+            <td><span class="status-pill status-plan">Planned</span></td>
+            <td>2 explainers + policy Shorts</td>
+            <td>Community registrations</td>
+            <td>First L0–L3 explainer series</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <div class="strip-item">
+      <p class="idx">01</p>
+      <p class="eyebrow">End-screen &amp; pinned comment</p>
+      <p>Every video closes with a named recommendation into one of the other two channels, not a generic "subscribe" card.</p>
+    </div>
+    <div class="strip-item">
+      <p class="idx">02</p>
+      <p class="eyebrow">Crossover episodes</p>
+      <p>Quarterly guest episodes where one initiative's expert appears on another channel's format — shared once, credited twice.</p>
+    </div>
+    <div class="strip-item">
+      <p class="idx">03</p>
+      <p class="eyebrow">Shared retargeting audience</p>
+      <p>Viewers of any channel enter one retargeting pool, segmented by which of the three topics they engaged with.</p>
+    </div>
+    <div class="strip-item">
+      <p class="idx">04</p>
+      <p class="eyebrow">Unified landing page + UTM</p>
+      <p>One tagged link per video routes to the right initiative's page, so every click is attributable back to its source channel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="funnel">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">From view to customer</p>
+      <h2>The shared conversion path</h2>
+      <p>Whichever channel a viewer arrives from, the path to becoming a customer follows the same four stages.</p>
+    </div>
+    <div class="funnel-steps">
+      <div class="fstep">
+        <div class="n">01</div>
+        <h4>Discover</h4>
+        <p>Viewer finds a video on one initiative's YouTube channel or social feed.</p>
+      </div>
+      <div class="fstep">
+        <div class="n">02</div>
+        <h4>Cross-launch</h4>
+        <p>End-screen, comment link, or crossover episode introduces a second, relevant initiative.</p>
+      </div>
+      <div class="fstep">
+        <div class="n">03</div>
+        <h4>Land</h4>
+        <p>UTM-tagged link routes to the matching initiative's page — tracked, not guessed.</p>
+      </div>
+      <div class="fstep">
+        <div class="n">04</div>
+        <h4>Convert</h4>
+        <p>Booking, trial signup, or registration — logged against the originating channel in the tracker above.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">Get in touch</p>
+      <h2>Ready to build out the tracker?</h2>
+      <p class="lead">We can turn this into a live spreadsheet or dashboard wired to each channel's analytics, and staff the content calendar behind it.</p>
+      <div class="contact-cta">
+        <a href="mailto:hello@hussanconsultancy.com" class="btn-primary">hello@hussanconsultancy.com</a>
+        <a href="index.html" class="btn-secondary">Back to home</a>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Hussan Consultancy Global LLP. All rights reserved. · Mumbai · Dubai · London</span>
+      <span>Being &amp; Becoming · AI Adaptive Tutor · Setu — plus Azad Tours, TofuChain, Audio Books &amp; ONE-NESS Community</span>
+    </div>
+  </footer>
+</section>
+
+</body>
+</html>
