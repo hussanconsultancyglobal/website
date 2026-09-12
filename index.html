@@ -49,7 +49,13 @@
   a{color:inherit;}
   img{max-width:100%; display:block;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
-  @media (max-width:640px){ .wrap{padding:0 20px;} }
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+    .nav-inner{height:80px; padding:0 20px;}
+    .brand img{height:44px;}
+    .footer-mark{height:56px;}
+    .case-logo{width:88px; height:88px;}
+  }
 
   /* ---------- NAV ---------- */
   header.nav{
@@ -61,13 +67,13 @@
   .nav-inner{
     max-width:1180px; margin:0 auto; padding:0 32px;
     display:flex; align-items:center; justify-content:space-between;
-    height:72px; color:#EDEEF0;
+    height:88px; color:#EDEEF0;
   }
   .brand{
     display:flex; align-items:center;
     text-decoration:none;
   }
-  .brand img{height:36px; width:auto; display:block;}
+  .brand img{height:56px; width:auto; display:block;}
   nav.links{display:flex; gap:34px; font-size:0.86rem;}
   nav.links a{text-decoration:none; color:#C7CBD4; transition:color .2s;}
   nav.links a:hover{color:var(--brass-soft);}
@@ -87,7 +93,7 @@
   .hero{
     background:radial-gradient(ellipse 120% 90% at 70% -10%, var(--ink-3) 0%, var(--ink) 55%);
     color:#fff;
-    padding:168px 0 100px;
+    padding:188px 0 100px;
     position:relative;
     overflow:hidden;
     border-bottom:1px solid var(--line);
@@ -195,8 +201,9 @@
     padding:5px 10px; letter-spacing:0.03em; white-space:nowrap; height:fit-content;
   }
   .case-logo{
-    width:56px; height:56px; object-fit:cover; border:1px solid var(--line-dark);
-    margin-bottom:12px;
+    width:112px; height:112px; object-fit:contain;
+    margin:0 0 18px;
+    background:transparent;
   }
 
   /* ---------- APPROACH STRIP ---------- */
@@ -218,6 +225,7 @@
   .office .region{font-family:'Poppins',sans-serif; font-size:0.68rem; color:var(--brass-soft); letter-spacing:0.08em; text-transform:uppercase; margin-top:4px;}
   .office .focus{color:#8992A3; font-size:0.85rem; margin-top:8px;}
   .contact-cta{margin-top:32px; display:flex; gap:16px; flex-wrap:wrap;}
+  .footer-mark{height:72px; width:auto; margin-top:44px;}
   footer{padding:28px 0; }
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:'Poppins',sans-serif; font-size:0.72rem; color:#6D7688;}
 </style>
@@ -389,7 +397,7 @@
           <span class="date">Aug 2026 · v1.0</span>
         </div>
         <div class="case-body">
-          <img class="case-logo" src="assets/being-becoming-logo.jpg" alt="Being &amp; Becoming logo">
+          <img class="case-logo" src="assets/being-becoming-logo.png" alt="Being &amp; Becoming logo">
           <span class="client">IP Owner — Hussan Consultancy Global</span>
           <h3>Being &amp; Becoming — AI-Enabled Telemedicine &amp; Diagnostics Platform</h3>
           <p>Architected the expansion of an existing mental-health booking platform into a full multi-specialty telemedicine product: a single patient record spanning mental health, general consultation, and diagnostic imaging, wrapped in an AI-enabled sales, chatbot, and follow-up layer — with every clinical decision kept in human clinicians' hands. Built on the same Human Transformation philosophy underpinning our human-development practice.</p>
@@ -608,7 +616,7 @@
         <a href="mailto:hello@hussanconsultancy.com" class="btn-primary">hello@hussanconsultancy.com</a>
         <a href="tel:+912240001234" class="btn-secondary">+91 22 4000 1234</a>
       </div>
-      <img src="assets/logo-icon.png" alt="Hussan Consultancy Global mark" style="height:40px; width:auto; margin-top:44px; opacity:0.85;">
+      <img class="footer-mark" src="assets/logo-reversed.png" alt="Hussan Consultancy Global mark">
     </div>
     <div class="offices">
       <div class="office">
